@@ -6,7 +6,7 @@
 #    By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/02 22:04:16 by sunpark           #+#    #+#              #
-#    Updated: 2020/03/05 20:33:22 by sunpark          ###   ########.fr        #
+#    Updated: 2020/03/09 16:52:34 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,20 @@ GCCFLAG	= -Wall -Wextra -Werror
 RM		= rm -f
 
 .c.o:		
-			make -C libft
-			$(GCC) $(GCCFLAG) -c $< -o $(<:.c=.o) $(LIBFT) -I$(INCDIR)
+			@$(MAKE) -C libft bonus
+			$(GCC) $(GCCFLAG) -c $< -o $(<:.c=.o) -I$(INCDIR)
 
 $(NAME):	$(OBJS)
-			ar rc $(NAME) $(OBJS)
+			ar rc $(NAME) $(OBJS) $(LIBFT)
 
 all:		$(NAME)
 
 clean:
+			@$(MAKE) -C libft clean
 			$(RM) $(OBJS)
 
 fclean:		clean
+			@$(MAKE) -C libft fclean
 			$(RM) $(NAME)
 
 .PHONY:		libft all clean fclean
