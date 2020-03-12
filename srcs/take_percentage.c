@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   take_percentage.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:43:20 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/09 16:05:59 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/12 21:35:25 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ int	get_one_num(char **format)
 	tot_num = 0;
 	while (*now)
 	{
-		now_num = is_conversion_or_flag()
+		now_num = is_conversion_or_flag(*now);
+		
 	}
 	*format = now;
 	return (count);
 }
 
-int	get_args_num(char *format)
+int	print_percentage(char **format, va_list args_list, int *printed)
 {
 	int	result;
 
@@ -51,7 +52,7 @@ int	get_args_num(char *format)
 	while (*format)
 	{
 		if (*format == '%')
-			result += get_one_num(&format);
+			result += get_one_num(format);
 		format++;
 	}
 	return (result);
