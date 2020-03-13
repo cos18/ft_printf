@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:43:20 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/12 21:35:25 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/13 18:54:33 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,25 @@ int	is_conversion_or_flag(char c)
 		return (1);
 	if (c == '*')
 		return (2);
+	if (c == '.')
+		return (3);
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || \
 			c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (3);
+		return (4);
 	return (0);
 }
 
-int	get_one_num(char **format)
+int	print_percent(const char **format, va_list *args_list)
 {
-	char	*now;
-	int		count;
-	int		tot_num;
-	int		now_num;
+	int status;
+	int printed;
 
-	now = *format + 1;
-	count = 0;
-	tot_num = 0;
-	while (*now)
+	printed = 0;
+	status = 1;
+	while (status)
 	{
-		now_num = is_conversion_or_flag(*now);
-		
+		if (status > is_conversion_or_flag(**format))
+			break;
 	}
-	*format = now;
-	return (count);
-}
-
-int	print_percentage(char **format, va_list args_list, int *printed)
-{
-	int	result;
-
-	result = 0;
-	while (*format)
-	{
-		if (*format == '%')
-			result += get_one_num(format);
-		format++;
-	}
-	return (result);
+	return (printed);
 }

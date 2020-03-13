@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   percent.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/04 15:48:45 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/13 18:54:22 by sunpark          ###   ########.fr       */
+/*   Created: 2020/03/13 18:55:20 by sunpark           #+#    #+#             */
+/*   Updated: 2020/03/13 19:33:54 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../includes/libft.h"
+#ifndef PERCENT_H
+# define PERCENT_H
 
-int		ft_printf(const char *format, ...)
+typedef struct	s_percent
 {
-	va_list	args_list;
-	int		printed;
+	int			sort;
+	int			sign;
+	int			width;
+	int			precision;
+}				t_percent;
 
-	va_start(args_list, format);
-	printed = 0;
-	while (*format)
-	{
-		if(*format == '%')
-			printed += print_percent(&format, &args_list);
-		else
-		{
-			ft_putchar_fd(*(format++), 1);
-			printed += 1;
-		}
-	}
-	va_end(args_list);
-	return (printed);
-}
+t_percent	*create_percent(void);
+
+#endif
