@@ -6,11 +6,11 @@
 #    By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/02 22:04:16 by sunpark           #+#    #+#              #
-#    Updated: 2020/03/12 21:33:29 by sunpark          ###   ########.fr        #
+#    Updated: 2020/03/14 17:49:59 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		= ft_printf.c take_percentage.c
+SRC		= ft_printf.c take_percentage.c percent.c
 SRCDIR	= ./srcs/
 INCDIR	= includes
 

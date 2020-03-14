@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_bonus.h                                      :+:      :+:    :+:   */
+/*   print_element.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 21:06:08 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/14 23:40:30 by sunpark          ###   ########.fr       */
+/*   Created: 2020/03/15 00:16:27 by sunpark           #+#    #+#             */
+/*   Updated: 2020/03/15 00:23:58 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_BONUS_H
-# define LIBFT_BONUS_H
+#ifndef PRINT_ELEMENT_H
+# define PRINT_ELEMENT_H
 
-# include <stdlib.h>
+# include <stdarg.h>
+# include "libft.h"
+# include "percent.h"
 
-int		ft_isupper(int c);
-int		ft_islower(int c);
-int		ft_isnumber(int c);
-int		ft_isblank(int c);
-char	*ft_strndup(const char *s1, size_t n);
+int	print_char(t_percent *p, va_list *ap);
+int	print_string(t_percent *p, va_list *ap);
+int	print_int(t_percent *p, va_list *ap);
+int print_unint(t_percent *p, va_list *ap);
+int print_pointer(t_percent *p, va_list *ap);
+int print_hex(t_percent *p, va_list *ap, int is_upper);
 
 #endif

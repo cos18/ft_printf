@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 18:54:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/13 19:35:46 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/14 18:46:40 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,30 @@ t_percent	*create_percent(void)
 	
 	result = (t_percent *)malloc(sizeof(t_percent));
 	if (result)
-	{
-		result->sort = 0;
-		result->sign = 0;
-		result->width = 0;
-		result->precision = 0;
-	}
+		clear_percent(result);
 	return (result);
+}
+
+void		set_sort(t_percent *p, char c)
+{
+	if (c == '-')
+		p->sort = 2;
+	else if (c == '0' && p->sort != 2)
+		p->sort = 1;
+}
+
+void		set_sign(t_percent *p, char c)
+{
+	if (c == '+')
+		p->sort = 2;
+	else if (c == ' ' && p->sort != 2)
+		p->sort = 1;
+}
+
+void		clear_percent(t_percent *p)
+{
+	p->sort = 0;
+	p->sign = 0;
+	p->width = 0;
+	p->precision = 0;
 }
