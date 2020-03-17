@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 15:48:45 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/13 18:54:22 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/17 23:19:31 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../includes/libft.h"
 
 int		ft_printf(const char *format, ...)
 {

@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:43:20 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/15 00:45:48 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/17 23:48:18 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../includes/libft.h"
 #include "../includes/print_element.h"
 
 int		is_conversion_or_flag(char c)
@@ -74,10 +73,12 @@ int		print_p(t_percent *now, const char **format, va_list *args_list)
 {
 	int	result;
 
+  result = 0;
 	if (**format == 'c')
 		result = print_char(now, args_list);
 	else if (**format == 's')
 		result = print_string(now, args_list);
+  /*
 	else if (**format == 'd' || **format == 'i')
 		result = print_int(now, args_list);
 	else if (**format == 'u')
@@ -86,6 +87,7 @@ int		print_p(t_percent *now, const char **format, va_list *args_list)
 		result = print_hex(now, args_list, (**format == 'X' ? 1 : 0));
 	else
 		result = print_pointer(now, args_list);
+  */
 	(*format)++;
 	return (result);
 }
