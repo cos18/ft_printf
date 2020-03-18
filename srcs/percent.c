@@ -6,16 +6,17 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 18:54:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/17 23:19:25 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/18 16:49:40 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/ft_printf.h"
 
 t_percent	*create_percent(void)
 {
 	t_percent	*result;
-	
+
 	result = (t_percent *)malloc(sizeof(t_percent));
 	if (result)
 		clear_percent(result);
@@ -43,5 +44,5 @@ void		clear_percent(t_percent *p)
 	p->sort = 0;
 	p->sign = 0;
 	p->width = 0;
-	p->precision = 0;
+	p->precision = -1;
 }

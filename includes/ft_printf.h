@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 15:42:45 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/17 23:43:43 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/18 15:37:47 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ typedef struct	s_form
 }				t_form;
 
 int		ft_printf(const char *format, ...);
-int		print_percent(const char **format, va_list *args_list);
+int		print_percent(const char **format, va_list args_list);
 
 #endif

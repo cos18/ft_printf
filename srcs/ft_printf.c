@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 15:48:45 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/17 23:19:31 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/18 15:37:41 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if(*format == '%')
-			printed += print_percent(&format, &args_list);
+			printed += print_percent(&format, args_list);
 		else
 		{
 			ft_putchar_fd(*(format++), 1);

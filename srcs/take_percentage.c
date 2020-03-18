@@ -6,10 +6,11 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:43:20 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/17 23:48:18 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/18 21:03:12 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/ft_printf.h"
 #include "../includes/print_element.h"
 
@@ -27,7 +28,7 @@ int		is_conversion_or_flag(char c)
 	return (0);
 }
 
-int		get_p_num(const char **format, va_list *args_list)
+int		get_p_num(const char **format, va_list args_list)
 {
 	char		*numstr;
 	const char	*first;
@@ -35,10 +36,16 @@ int		get_p_num(const char **format, va_list *args_list)
 	int			result;
 
 	if (**format == '*')
-		return (va_arg(*args_list, int));
+	{
+		result = va_arg(args_list, int);
+		++(*format);
+		return (result);
+	}
 	len = 0;
+	while (**format == '0')
+		++(*format);
 	first = *format;
-	while (ft_isdigit(**format) && (len || **format != '0'))
+	while (ft_isdigit(**format))
 	{
 		len++;
 		++(*format);
@@ -49,10 +56,13 @@ int		get_p_num(const char **format, va_list *args_list)
 	return (result);
 }
 
-void	assign_p(t_percent *now, const char **format, va_list *args_list)
+void	assign_p(t_percent *now, const char **format, va_list args_list)
 {
 	if (is_conversion_or_flag(**format) == 1)
-		set_sort(now, *((*format)++));
+	{
+		set_sort(now, **format);
+		(*format)++;
+	}
 	else if (is_conversion_or_flag(**format) == 3)
 	{
 		now->width = get_p_num(format, args_list);
@@ -65,11 +75,16 @@ void	assign_p(t_percent *now, const char **format, va_list *args_list)
 	else
 	{
 		++(*format);
-		now->precision = get_p_num(format, args_list);
+		if (is_conversion_or_flag(**format) == 3 || **format == '0')
+			now->precision = get_p_num(format, args_list);
+		else
+			now->precision = 0;
+		if (now->precision < 0)
+			now->precision = -1;
 	}
 }
 
-int		print_p(t_percent *now, const char **format, va_list *args_list)
+int		print_p(t_percent *now, const char **format, va_list args_list)
 {
 	int	result;
 
@@ -78,13 +93,15 @@ int		print_p(t_percent *now, const char **format, va_list *args_list)
 		result = print_char(now, args_list);
 	else if (**format == 's')
 		result = print_string(now, args_list);
-  /*
+	else if (**format == '%')
+		result = print_real_percent(now);
 	else if (**format == 'd' || **format == 'i')
 		result = print_int(now, args_list);
+	/*
 	else if (**format == 'u')
 		result = print_unint(now, args_list);
 	else if (**format == 'x' || **format == 'X')
-		result = print_hex(now, args_list, (**format == 'X' ? 1 : 0));
+		result = print_hex(now, args_list, (**format == 'X' ? TRUE : FALSE));
 	else
 		result = print_pointer(now, args_list);
   */
@@ -92,7 +109,7 @@ int		print_p(t_percent *now, const char **format, va_list *args_list)
 	return (result);
 }
 
-int		print_percent(const char **format, va_list *args_list)
+int		print_percent(const char **format, va_list args_list)
 {
 	int			status;
 	int			printed;
@@ -101,6 +118,7 @@ int		print_percent(const char **format, va_list *args_list)
 	printed = 0;
 	status = 1;
 	now = create_percent();
+	(*format)++;
 	while (**format)
 	{
 		if (!is_conversion_or_flag(**format))

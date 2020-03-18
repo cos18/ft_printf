@@ -6,14 +6,29 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 00:39:26 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/17 23:19:21 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/18 17:22:28 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/ft_printf.h"
 #include "../includes/print_element.h"
 
-int	print_char(t_percent *p, va_list *ap)
+int	print_real_percent(t_percent *p)
+{
+	int	result;
+
+	result = 0;
+	if (p->sort != 2)
+		result += print_sort(p, 1);
+	ft_putchar_fd('%', 1);
+	result += 1;
+	if (p->sort == 2)
+		result += print_sort(p, 1);
+	return (result);
+}
+
+int	print_char(t_percent *p, va_list ap)
 {
 	int		result;
 	char	print;
@@ -21,7 +36,7 @@ int	print_char(t_percent *p, va_list *ap)
 	result = 0;
 	if (p->sort != 2)
 		result += print_sort(p, 1);
-	print = (char)va_arg(*ap, int);
+	print = (char)va_arg(ap, int);
 	ft_putchar_fd(print, 1);
 	result += 1;
 	if (p->sort == 2)
@@ -29,7 +44,7 @@ int	print_char(t_percent *p, va_list *ap)
 	return (result);
 }
 
-int	print_string(t_percent *p, va_list *ap)
+int	print_string(t_percent *p, va_list ap)
 {
 	int		result;
 	char	*print;
@@ -37,9 +52,12 @@ int	print_string(t_percent *p, va_list *ap)
 	int		cnt;
 
 	result = 0;
-	print = (char *)va_arg(*ap, char *);
+	print = (char *)va_arg(ap, char *);
+	if (print == NULL)
+		print = "(null)";
 	p_len = ft_strlen(print);
-	p_len = (p_len > p->precision) ? p->precision : p_len;
+	if (p->precision != -1)
+		p_len = (p_len > p->precision) ? p->precision : p_len;
 	if (p->sort != 2)
 		result += print_sort(p, p_len);
 	cnt = -1;
