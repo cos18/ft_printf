@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:43:20 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/19 15:46:17 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/21 21:07:57 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,10 @@ int		print_p(t_percent *now, const char **format, va_list args_list)
 		result = print_int(now, args_list);
 	else if (**format == 'u')
 		result = print_unint(now, args_list);
-	/*
 	else if (**format == 'x' || **format == 'X')
 		result = print_hex(now, args_list, (**format == 'X' ? TRUE : FALSE));
 	else
 		result = print_pointer(now, args_list);
-	*/
 	(*format)++;
 	return (result);
 }

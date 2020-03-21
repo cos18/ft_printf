@@ -6,12 +6,12 @@
 #    By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/02 22:04:16 by sunpark           #+#    #+#              #
-#    Updated: 2020/03/18 21:03:32 by sunpark          ###   ########.fr        #
+#    Updated: 2020/03/21 22:53:47 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC		= ft_printf.c take_percentage.c percent.c print_ascii.c \
-			print_element.c print_num.c
+			print_element.c print_num.c print_hex.c print_pointer.c
 SRCDIR	= ./srcs/
 INCDIR	= includes
 
