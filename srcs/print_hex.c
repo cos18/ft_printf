@@ -6,13 +6,12 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/21 20:26:48 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/21 22:50:30 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/22 15:10:31 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../includes/libft.h"
-#include "../includes/print_element.h"
+#include "libft.h"
+#include "print_element.h"
 
 int				get_hex_len(unsigned int n)
 {

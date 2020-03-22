@@ -6,13 +6,12 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 00:39:26 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/18 17:22:28 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/22 15:10:19 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../includes/ft_printf.h"
-#include "../includes/print_element.h"
+#include "ft_printf.h"
+#include "print_element.h"
 
 int	print_real_percent(t_percent *p)
 {

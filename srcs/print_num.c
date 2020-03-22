@@ -6,13 +6,12 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 19:40:37 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/19 16:42:53 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/22 15:10:06 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../includes/ft_printf.h"
-#include "../includes/print_element.h"
+#include "ft_printf.h"
+#include "print_element.h"
 
 int		get_digit_len(int n)
 {
@@ -32,10 +31,10 @@ void	put_unint(unsigned int n, t_percent *p)
 	ft_putnbr_fd(n % 100000, 1);
 }
 
-int		sort_front(t_percent *p, int print, int len)
+int		sort_front(t_percent *p, int print, int len, char plus)
 {
-	if (p->sort && print < 0)
-		ft_putchar_fd('-', 1);
+	if (p->sort && (print < 0 || p->sign))
+		ft_putchar_fd(((p->sign) ? plus : '-'), 1);
 	if (p->precision != -1)
 		p->sort = 0;
 	return (print_sort(p, len + ((print < 0) ? 1 : 0)));
@@ -43,20 +42,22 @@ int		sort_front(t_percent *p, int print, int len)
 
 int		print_int(t_percent *p, va_list ap)
 {
-	int len;
-	int print;
-	int result;
+	int 	len;
+	int 	print;
+	int 	result;
+	char	plus;
 
 	print = va_arg(ap, int);
+	plus = ((p->sign == 1) ? ' ' : '+');
 	p->sort = (p->sort == 1 && print < 0 && p->precision >= 0) ? 0 : p->sort;
-	result = (print < 0) ? 1 : 0;
+	result = ((print < 0) || (p->sign)) ? 1 : 0;
 	len = get_digit_len(print);
 	len = ((p->precision > len) ? p->precision : len);
 	result += len;
 	if (p->sort != 2)
-		result += sort_front(p, print, len);
-	if (p->sort != 1 && print < 0)
-		ft_putchar_fd('-', 1);
+		result += sort_front(p, print, len, plus);
+	if (p->sort != 1 && (print < 0 || p->sign))
+		ft_putchar_fd(((p->sign) ? plus : '-'), 1);
 	while (len > get_digit_len(print) && (len--))
 		ft_putchar_fd('0', 1);
 	put_unint((print < 0) ? -1 * print : print, p);

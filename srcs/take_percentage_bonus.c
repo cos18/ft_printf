@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_percentage.c                                  :+:      :+:    :+:   */
+/*   take_percentage_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:43:20 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/22 15:10:56 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/22 15:36:47 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		get_char_num(char c)
 {
 	if (c == '-' || c == '0')
 		return (1);
+	if (c == ' ' || c == '+')
+		return (2);
 	if (c == '*' || ft_isdigit(c))
 		return (3);
 	if (c == '.')
@@ -62,6 +64,11 @@ void	assign_p(t_percent *now, const char **format, va_list args_list)
 		set_sort(now, **format);
 		(*format)++;
 	}
+	else if (get_char_num(**format) == 2)
+	{
+		set_sign(now, **format);
+		(*format)++;
+	}
 	else if (get_char_num(**format) == 3)
 	{
 		now->width = get_p_num(format, args_list);
@@ -87,7 +94,7 @@ int		print_p(t_percent *now, const char **format, va_list args_list)
 {
 	int	result;
 
-  result = 0;
+	result = 0;
 	if (**format == 'c')
 		result = print_char(now, args_list);
 	else if (**format == 's')
@@ -120,7 +127,7 @@ int		print_percent(const char **format, va_list args_list)
 	{
 		if (!get_char_num(**format))
 			break;
-		if (status > get_char_num(**format))
+		if (status > 2 && status > get_char_num(**format))
 			clear_percent(now);
 		status = get_char_num(**format);
 		if (status == 5)

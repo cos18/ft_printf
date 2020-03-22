@@ -6,13 +6,12 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/21 22:35:33 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/21 23:07:09 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/22 15:10:48 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../includes/ft_printf.h"
-#include "../includes/print_element.h"
+#include "ft_printf.h"
+#include "print_element.h"
 
 int 				get_long_hex_len(unsigned long long print)
 {
@@ -30,13 +29,7 @@ void				print_long_hex_num(unsigned long long print, t_percent *p)
 	int		minnum;
 
 	if (print == 0 && p->precision == 0)
-	{
-		/*
-		if (p->width)
-			ft_putchar_fd(' ', 1);
-		*/
 		return ;
-	}
 	locate = get_long_hex_len(print);
 	while (locate--)
 	{

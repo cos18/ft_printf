@@ -6,12 +6,12 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 22:47:45 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/17 23:19:17 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/22 14:30:12 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../includes/print_element.h"
+#include "ft_printf.h"
+#include "print_element.h"
 
 int	print_sort(t_percent *p, int len)
 {

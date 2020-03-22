@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/13 18:54:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/18 16:49:40 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/03/22 14:56:41 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 t_percent	*create_percent(void)
 {
@@ -34,9 +33,9 @@ void		set_sort(t_percent *p, char c)
 void		set_sign(t_percent *p, char c)
 {
 	if (c == '+')
-		p->sort = 2;
-	else if (c == ' ' && p->sort != 2)
-		p->sort = 1;
+		p->sign = 2;
+	else if (c == ' ' && p->sign != 2)
+		p->sign = 1;
 }
 
 void		clear_percent(t_percent *p)
