@@ -6,7 +6,7 @@
 #    By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/02 22:04:16 by sunpark           #+#    #+#              #
-#    Updated: 2020/03/22 15:36:33 by sunpark          ###   ########.fr        #
+#    Updated: 2020/04/16 20:23:24 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ test:		$(OBJS)
 
 clean:
 			@$(MAKE) -C libft clean
-			$(RM) $(BOBJS) test.o
+			$(RM) $(OBJS) $(BOBJS) test.o
 
 fclean:		clean
 			@$(MAKE) -C libft fclean

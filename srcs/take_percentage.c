@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:43:20 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/22 15:10:56 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/04/16 20:03:47 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		print_p(t_percent *now, const char **format, va_list args_list)
 {
 	int	result;
 
-  result = 0;
+	result = 0;
 	if (**format == 'c')
 		result = print_char(now, args_list);
 	else if (**format == 's')
@@ -119,14 +119,14 @@ int		print_percent(const char **format, va_list args_list)
 	while (**format)
 	{
 		if (!get_char_num(**format))
-			break;
+			break ;
 		if (status > get_char_num(**format))
 			clear_percent(now);
 		status = get_char_num(**format);
 		if (status == 5)
 		{
 			printed = print_p(now, format, args_list);
-			break;
+			break ;
 		}
 		else
 			assign_p(now, format, args_list);

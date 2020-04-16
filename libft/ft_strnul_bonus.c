@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnul_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 17:49:32 by sunpark           #+#    #+#             */
-/*   Updated: 2020/04/03 23:16:55 by sunpark          ###   ########.fr       */
+/*   Created: 2020/03/28 23:30:47 by sunpark           #+#    #+#             */
+/*   Updated: 2020/04/09 10:37:41 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strnul(void)
 {
-	size_t	locate;
+	char	*result;
 
-	if (!dst || !src)
-		return (0);
-	if (dstsize != 0)
-	{
-		locate = 0;
-		while ((locate + 1) < dstsize && src[locate] != '\0')
-		{
-			dst[locate] = src[locate];
-			locate++;
-		}
-		dst[locate] = '\0';
-	}
-	return (ft_strlen(src));
+	result = (char *)malloc(1);
+	if (result)
+		*result = '\0';
+	return (result);
 }

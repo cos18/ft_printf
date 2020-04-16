@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:43:20 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/22 15:36:47 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/04/16 20:29:27 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,10 @@ int		get_p_num(const char **format, va_list args_list)
 
 void	assign_p(t_percent *now, const char **format, va_list args_list)
 {
-	if (get_char_num(**format) == 1)
+	if (get_char_num(**format) == 1 || get_char_num(**format) == 2)
 	{
-		set_sort(now, **format);
-		(*format)++;
-	}
-	else if (get_char_num(**format) == 2)
-	{
-		set_sign(now, **format);
+		(get_char_num(**format) == 1 ? \
+			set_sort(now, **format) : set_sign(now, **format));
 		(*format)++;
 	}
 	else if (get_char_num(**format) == 3)
@@ -126,14 +122,14 @@ int		print_percent(const char **format, va_list args_list)
 	while (**format)
 	{
 		if (!get_char_num(**format))
-			break;
+			break ;
 		if (status > 2 && status > get_char_num(**format))
 			clear_percent(now);
 		status = get_char_num(**format);
 		if (status == 5)
 		{
 			printed = print_p(now, format, args_list);
-			break;
+			break ;
 		}
 		else
 			assign_p(now, format, args_list);

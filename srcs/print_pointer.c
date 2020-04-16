@@ -6,14 +6,14 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/21 22:35:33 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/22 15:10:48 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/04/16 20:14:36 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "print_element.h"
 
-int 				get_long_hex_len(unsigned long long print)
+int					get_long_hex_len(unsigned long long print)
 {
 	return ((print < 16) ? 1 : 1 + get_long_hex_len(print / 16));
 }
@@ -41,6 +41,12 @@ void				print_long_hex_num(unsigned long long print, t_percent *p)
 	}
 }
 
+void				set_sort_two(t_percent *p, int len, int *result)
+{
+	p->sort = 0;
+	*result += print_sort(p, len + 2);
+}
+
 int					print_pointer(t_percent *p, va_list ap)
 {
 	unsigned long long	print;
@@ -58,10 +64,7 @@ int					print_pointer(t_percent *p, va_list ap)
 	}
 	result = len + 2;
 	if (p->sort != 2)
-	{
-		p->sort = 0;
-		result += print_sort(p, len + 2);
-	}
+		set_sort_two(p, len, &result);
 	ft_putstr_fd("0x", 1);
 	while (len > dlen && (len--))
 		ft_putchar_fd('0', 1);

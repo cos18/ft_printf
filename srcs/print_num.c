@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 19:40:37 by sunpark           #+#    #+#             */
-/*   Updated: 2020/03/22 15:10:06 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/04/16 20:03:07 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int		sort_front(t_percent *p, int print, int len, char plus)
 
 int		print_int(t_percent *p, va_list ap)
 {
-	int 	len;
-	int 	print;
-	int 	result;
+	int		len;
+	int		print;
+	int		result;
 	char	plus;
 
 	print = va_arg(ap, int);
